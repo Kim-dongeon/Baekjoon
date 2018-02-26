@@ -13,3 +13,18 @@ int main()
 	}
 	printf("%d\n", sum);
 }
+
+//-----------------------------------------
+//#include <stdio.h>
+//
+//int main()
+//{
+//	int N, x = 0, sum = 0;
+//	scanf("%d", &N);
+//	while (N--)
+//	{
+//		scanf("%1d", &x);
+//		sum += x;
+//	}
+//	printf("%d", sum);
+//}
