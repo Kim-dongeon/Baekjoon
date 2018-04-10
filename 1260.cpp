@@ -14,27 +14,41 @@ int N, M, V;
 
 void doDFS(int cur)
 {
-	s.push(cur);
+	dfs_visited[cur] = true;
+	printf("%d ", cur);
 
-	while (!s.empty())
+	for (int i = 1; i <= N; i++)
 	{
-		int next = s.top();
-		s.pop();
-		if (dfs_visited[next] == false)
+		if (dfs_visited[i] == false && graph[cur][i])
 		{
-			dfs_visited[next] = true;
-			printf("%d ", next);
-
-			for (int i = N; i >= 1; i--)
-			{
-				if (!dfs_visited[i] && graph[next][i])
-				{
-					s.push(i);
-				}
-			}
+			doDFS(i);
 		}
 	}
 }
+
+//void doDFS(int cur)
+//{
+//	s.push(cur);
+//
+//	while (!s.empty())
+//	{
+//		int next = s.top();
+//		s.pop();
+//		if (dfs_visited[next] == false)
+//		{
+//			dfs_visited[next] = true;
+//			printf("%d ", next);
+//
+//			for (int i = N; i >= 1; i--)
+//			{
+//				if (!dfs_visited[i] && graph[next][i])
+//				{
+//					s.push(i);
+//				}
+//			}
+//		}
+//	}
+//}
 
 void doBFS(int n)
 {
