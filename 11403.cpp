@@ -41,3 +41,58 @@ int main()
 		printf("\n");
 	}
 }
+
+//---------------------------
+#include <iostream>
+#include <set>
+#include <functional>
+#include <map>
+#include <cmath>
+#include <cstring>
+using namespace std;
+
+int arr[101][101];
+int answer[101][101];
+
+int N;
+void go(int start, int cur)
+{
+
+	for (int i = 0; i < N; i++)
+	{
+		if (arr[cur][i] == 1 && answer[start][i] == 0)
+		{
+			answer[start][i] = 1;
+			go(start, i);
+		}
+	}
+}
+int main()
+{
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+
+	for (int i = 0; i < N; i++)
+	{
+		//for (int j = 0; j < N; j++)
+		//{
+		go(i, i);
+		//}
+	}
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cout << answer[i][j] << ' ';
+		}
+		cout << endl;
+	}
+}
