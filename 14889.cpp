@@ -82,3 +82,75 @@ int main()
 	printf("%d\n", _min);
 	
 }
+
+//-------------------------------------------------------------´Ù½ÃÇ¬°Å
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+int arr[22][22];
+int _set[22];
+int min_diff = 99999;
+void go(int set[], int size, int n, int k, int index)
+{
+	if (k == 0)
+	{
+		vector<int> team_start;
+		vector<int> team_link;
+		for (int i = 0; i < n; i++)
+		{
+			if (set[i] == 0)
+			{
+				team_start.push_back(i);
+			}
+			else
+			{
+				team_link.push_back(i);
+			}
+		}
+
+		int start_sum = 0;
+		int link_sum = 0;
+		for (int i = 0; i < team_start.size(); i++)
+		{
+			for (int j = i + 1; j < team_start.size(); j++)
+			{
+				start_sum += arr[team_start[i]][team_start[j]] + arr[team_start[j]][team_start[i]];
+				link_sum += arr[team_link[i]][team_link[j]] + arr[team_link[j]][team_link[i]];
+			}
+		}
+
+		min_diff = min(min_diff, abs(start_sum - link_sum));
+		return;
+	}
+	else if (n == index)
+	{
+		return;
+	}
+
+	set[size] = 1;
+	go(set, size + 1, n, k - 1, index + 1);
+	set[size] = 0;
+	if (set[0] == 0) return;
+	go(set, size + 1, n, k, index + 1);
+}
+int main()
+{
+	int N;
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			int tmp;
+			cin >> tmp;
+			arr[i][j] = tmp;
+		}
+	}
+
+	go(_set, 0, N, N / 2, 0);
+	cout << min_diff;
+}
