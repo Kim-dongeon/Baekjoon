@@ -21,8 +21,7 @@ void subset(int arr[],int size, int n, int index, int s){
 	subset(arr,size+1,n,index+1,s);
 	subset(arr,size,n,index+1,s);
 }
-int main() {
-	// your code goes here
+int main() {	
 	int N,S;
 	scanf("%d %d",&N,&S);
 	for(int i=0;i<N;i++)
