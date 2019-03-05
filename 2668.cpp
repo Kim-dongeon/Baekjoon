@@ -73,3 +73,64 @@ int main() {
 	}
 
 }
+/*
+#include <iostream>
+#include <cstdio>
+#include <vector>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+int arr[1000];
+int N;
+int isVisited[1000];
+int answer_check[102];
+vector<int> ans;
+bool go(int idx,int sx) {
+
+if (isVisited[arr[idx]] == 0) {
+isVisited[arr[idx]] = 1;
+
+if (!go(arr[idx], sx)) {
+isVisited[arr[idx]] = 0;
+return false;
+}
+}
+else {
+if (arr[idx] == sx) {
+return true;
+}
+else {
+return false;
+}
+}
+}
+int main() {
+cin >> N;
+for (int i = 1; i <= N; i++) {
+scanf("%d", &arr[i]);
+}
+
+for (int i = 1; i <= N; i++) {
+if (!isVisited[i]) {
+isVisited[i] = true;
+if (!go(i, i)) {
+isVisited[i] = false;
+}
+}
+
+}
+
+for (int i = 1; i <= N; i++) {
+if (isVisited[i]) {
+ans.push_back(i);
+}
+}
+
+int ans_size = ans.size();
+cout << ans_size << endl;
+for (int i = 0; i < ans_size; i++) {
+cout << ans[i] << endl;
+}
+
+}*/
