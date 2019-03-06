@@ -1,3 +1,55 @@
+/*#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int arr[20][20];
+
+int N;
+int cnt;
+
+bool promising(int row, int col) {
+
+	for (int i = 0; i < row; i++) {
+		if (arr[i][col] == 1) {
+			return false;
+		}
+		if (col - i - 1 >= 0 ) {
+			if (arr[row-i-1][(col - i - 1)]) {
+				return false;
+			}
+		}
+
+		if (col + i + 1 < N) {
+			if (arr[row - i - 1][col + i + 1]) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+
+}
+void dfs(int row) {
+	if (row == N) {
+		cnt++;
+		return;
+	}
+
+	for (int i = 0; i < N; i++) {
+		if (promising(row, i)) {
+			arr[row][i] = 1;
+			dfs(row + 1);
+			arr[row][i] = 0;
+		}
+	}
+}
+int main() {
+	cin >> N;
+	dfs(0);
+	cout << cnt;
+}
+*/
 #include <iostream>
 #include <cmath>
 using namespace std;
